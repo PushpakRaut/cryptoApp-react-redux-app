@@ -1,31 +1,13 @@
 # CryptoAPP React Redux APP
 
-## Live Wensite
+## Live Website
 https://cryptoapp-react-redux-app.netlify.app/
 
-## Available Scripts
+## The Website overview
+![1](https://github.com/user-attachments/assets/04fbf66c-608c-49aa-810f-7736d52be0ee)
 
-In the project directory, you can run:
+![2](https://github.com/user-attachments/assets/d9f5f3f8-9963-4e20-a45f-5d04cb0e1300)
 
-### `npm start`
+![3](https://github.com/user-attachments/assets/b4967f8f-416b-4697-8f98-ebf5ac05f503)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![4](https://github.com/user-attachments/assets/280db6d0-26e7-41d6-b193-6aa307535fd0)
