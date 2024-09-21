@@ -6,22 +6,22 @@ import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptoCoinsQuery } from "../services/cryptoApi";
 import Loader from "./Loader";
 
+import demoImage from "../images/demo.jpg"
+
 const { Text, Title } = Typography;
 const { Option } = Select;
 
-const demoImage =
-  "http://coinrevolution.com/wp-content/uploads/2020/06/cryptonews.jpg";
+
 
 const News = ({ simplified }) => {
   const [newsCategory, setNewsCategory] = useState("Cryptocurrency");
   const { data } = useGetCryptoCoinsQuery(100);
   const { data: cryptoNewsList } = useGetCryptoNewsQuery({
-    newsCategory,
-    count: simplified ? 6 : 20,
+    newsCategory
   });
-
-  if (!cryptoNewsList?.value) return <Loader />;
-
+  
+  if (!cryptoNewsList?.data) return <Loader />;
+  
   return (
     <Row gutter={[24, 24]}>
       {!simplified && (
@@ -43,17 +43,17 @@ const News = ({ simplified }) => {
           </Select>
         </Col>
       )}
-      {cryptoNewsList.value.map((news, i) => (
+      {(simplified ? cryptoNewsList.data.slice(1, 7) : cryptoNewsList.data ).map((news, i) => (
         <Col xs={24} sm={12} lg={8} key={i}>
           <Card hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noreferrer">
               <div className="news-image-container">
                 <Title level={4} className="news-title">
-                  {news.name}
+                  {news.title}
                 </Title>
                 <img
-                  // style={{ maxWidth: "200px", maxHeight: "100px" }}
-                  src={news?.image?.thumbnail?.contentUrl || demoImage}
+                  style={{ maxWidth: "100px", maxHeight: "100px", objectFit: "contain" }}
+                  src={news?.thumbnail || demoImage}
                   alt="news"
                 />
               </div>
@@ -65,18 +65,15 @@ const News = ({ simplified }) => {
               <div className="provider-container">
                 <div>
                   <Avatar
-                    src={
-                      news.provider[0]?.image?.thumbnail?.contentUrl ||
-                      demoImage
-                    }
+                    src={news.source.favicon || demoImage}
                     alt="news"
                   />
                   <Text className="provider-name">
-                    {news.provider[0]?.name}
+                    {news.source.name}
                   </Text>
                 </div>
                 <Text>
-                  {moment(news.datePublished).startOf("ss").fromNow()}
+                  {moment(news.date).startOf("ss").fromNow()}
                 </Text>
               </div>
             </a>
